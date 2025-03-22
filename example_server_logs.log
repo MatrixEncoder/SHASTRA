@@ -1,0 +1,13 @@
+[2025-03-06 10:15:23] INFO - Server started on port 8080
+[2025-03-06 10:15:45] 192.168.1.100 - GET /login HTTP/1.1 200
+[2025-03-06 10:15:46] 192.168.1.100 - POST /login HTTP/1.1 401
+[2025-03-06 10:15:47] 192.168.1.100 - POST /login HTTP/1.1 401
+[2025-03-06 10:15:48] 192.168.1.100 - POST /login HTTP/1.1 401
+# ... 100 more failed login attempts from same IP ...
+[2025-03-06 10:20:15] 192.168.1.101 - GET /admin/../../etc/passwd HTTP/1.1 403
+[2025-03-06 10:20:30] 192.168.1.102 - GET /search?q=<script>alert('xss')</script> HTTP/1.1 200
+[2025-03-06 10:21:05] 192.168.1.103 - POST /api/users HTTP/1.1
+Body: {"query": "SELECT * FROM users WHERE username = '' UNION SELECT * FROM admin_users--"}
+[2025-03-06 10:22:15] 192.168.1.104 - GET /download?file=../../../etc/shadow HTTP/1.1 403
+[2025-03-06 10:23:00] 192.168.1.105 - POST /login HTTP/1.1
+Body: username=admin&password=%00%00%00 HTTP/1.1 400

@@ -1,0 +1,12 @@
+requests==2.31.0
+beautifulsoup4==4.12.2
+flask==2.3.3
+python-owasp-zap-v2.4==0.0.20
+validators==0.22.0
+colorama==0.4.6
+lxml==4.9.3
+fpdf==1.7.2
+streamlit==1.22.0
+streamlit-lottie==0.0.5
+pytz==2023.3
+PyGithub==2.6.1
