@@ -805,8 +805,16 @@ class SecurityScanner:
                 html += "</div>"
         
         html += """
-                <div class="footer">
+                <div class=\"footer\">
                     <p>SHASTRA - Security Vulnerability Scanner</p>
+                    <div style='margin-top:18px; padding:12px 0; color:#00ffff; font-size:0.97em; opacity:0.9;'>
+                        <b>Privacy & Data Protection Notice</b><br>
+                        <span style='font-size:0.96em; color:#b2f7ff;'>
+                        SHASTRA does <b>not</b> store, log, or share any code, URLs, logs, or sensitive data submitted by users.<br>
+                        All analysis is performed in-memory and is <b>not retained</b> after your session ends.<br>
+                        <b>Your privacy and data security are of utmost importance.</b>
+                        </span>
+                    </div>
                 </div>
             </div>
         </body>
@@ -905,6 +913,13 @@ Analyzed File: {filename}
 
 """
             
+        md += """
+---
+**Privacy & Data Protection Notice**  
+SHASTRA does **not** store, log, or share any code, URLs, logs, or sensitive data submitted by users.  
+All analysis is performed in-memory and is **not retained** after your session ends.  
+**Your privacy and data security are of utmost importance.**
+"""
         return md
 
     def _determine_risk_level(self, issue_type: str) -> str:
@@ -970,6 +985,52 @@ Analyzed File: {filename}
 def main():
     # Custom CSS for dark theme with neon-style animations
     st.set_page_config(page_title="SHASTRA", layout="wide")
+    
+    # Large, professional glowing shield logo at top left
+    st.markdown('''
+        <style>
+        .shield-logo {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 9999;
+            width: 110px;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            animation: shield-glow 2s infinite alternate;
+        }
+        @keyframes shield-glow {
+            0% {
+                filter: drop-shadow(0 0 8px #00e6ff) drop-shadow(0 0 16px #00cfff);
+            }
+            100% {
+                filter: drop-shadow(0 0 32px #00e6ff) drop-shadow(0 0 64px #00cfff);
+            }
+        }
+        .shield-svg {
+            width: 110px;
+            height: 110px;
+        }
+        </style>
+        <div class="shield-logo">
+            <svg class="shield-svg" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="shield-glow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#00e6ff" stop-opacity="0.9"/>
+                    <stop offset="100%" stop-color="#003366" stop-opacity="0.15"/>
+                  </radialGradient>
+                  <linearGradient id="shield-main" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#1a2a6c"/>
+                    <stop offset="100%" stop-color="#00e6ff"/>
+                  </linearGradient>
+                </defs>
+                <path d="M55 10 L100 28 V55 C100 85 55 100 55 100 C55 100 10 85 10 55 V28 Z" fill="url(#shield-glow)" stroke="#00e6ff" stroke-width="4"/>
+                <path d="M55 22 L88 34 V55 C88 77 55 88 55 88 C55 88 22 77 22 55 V34 Z" fill="url(#shield-main)" stroke="#00e6ff" stroke-width="2.5"/>
+                <path d="M55 38 L70 46 V55 C70 66 55 72 55 72 C55 72 40 66 40 55 V46 Z" fill="#fff" fill-opacity="0.10" stroke="#00e6ff" stroke-width="1.5"/>
+            </svg>
+        </div>
+    ''', unsafe_allow_html=True)
     
     # Initialize the scanner
     scanner = SecurityScanner()
@@ -1645,3 +1706,22 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# --- Privacy Self-Declaration Footer ---
+def show_privacy_footer():
+    st.markdown('''
+        <div style="margin-top: 70px; margin-bottom: 40px; padding: 30px 0 20px 0; text-align: center; color: #00ffff; font-size: 1.08em; opacity: 0.92; background: transparent;">
+            <hr style="border: 1px solid #00ffff33; margin-bottom: 18px;">
+            <b>Privacy & Data Protection Notice</b><br>
+            <span style="font-size: 1.01em; color: #b2f7ff;">
+                SHASTRA does <b>not</b> store, log, or share any code, URLs, logs, or sensitive data submitted by users.<br>
+                All analysis is performed in-memory and is <b>not retained</b> after your session ends.<br>
+                <b>Your privacy and data security are of utmost importance.</b>
+            </span>
+            <br><br>
+            <span style="font-size: 0.97em; color: #a0eaff;">
+                For more details, please see our <a href="#" style="color:#00ffff; text-decoration:underline;">Privacy Policy</a> and <a href="#" style="color:#00ffff; text-decoration:underline;">Terms of Service</a>.
+            </span>
+        </div>
+    ''', unsafe_allow_html=True)
+
