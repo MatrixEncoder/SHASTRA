@@ -23,7 +23,7 @@ pip install -r requirements.txt
 To install SHASTRA, clone the repository and install the required dependencies:
 ```bash
 git clone https://github.com/MatrixEncoder/SHASTRA.git
-cd Prompt-Hackathon
+cd SHASTRA
 pip install -r requirements.txt
 ```
 
