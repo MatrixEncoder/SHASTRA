@@ -1,5 +1,7 @@
 # SHASTRA
 
+(Live demo deployed on Streamlit: https://shastra2.streamlit.app
+
 ## Overview
 SHASTRA is a security scanner application designed to analyze source code and server logs for potential vulnerabilities. It utilizes regex patterns to detect various types of security threats, including SQL injection, XSS, and sensitive data exposure.
 
